@@ -41,6 +41,4 @@ class Interface:
             events = n.to_raws()
             if events is not None:
                 accum += events
-        for i in range(0, len(accum)):
-            print(accum[i].time)
         self.play_raw(accum)

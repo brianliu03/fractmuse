@@ -13,12 +13,8 @@ class Notes_1:
     
     def run(self):
         my_list = []
-        for i in range(0, len(self.modulus)):
-            my_list.append(Note(None, 0.5, 0, 0, span=0.5, root=21, sieve=(self.modulus[i], self.shift[i])))
-        print(my_list)
-        my_list.sort(key=lambda x: x.pitch)
-        print(my_list)
+        # for i in range(0, len(self.modulus)):
+        my_list.append(Note(None, 0.5, 0, 0, span=0.5, root=21, sieve=(self.modulus, self.shift)))
         for i in range(self.num_expansions):
             my_list = expand(my_list, self.motif)
-        my_list.sort(key=lambda x: x.pitch)
         return my_list

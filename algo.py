@@ -20,20 +20,21 @@ def snotes_to_notes(snotes):
         output.append(note)
     return output
 
-def snotes_to_notes_sieve(snotes, modulus):
+def snotes_to_notes_sieve(snotes, modulus, shift):
     time = 0
     output = []
     i = 0
-    j = 0
+    # j = 0
     for n in snotes:
         counter = 0
         while True:
             modulo = modulus[counter]
+            base = shift[counter]
             counter +=  1
-            print(i, modulo, i % modulo, j)
-            j += 1
-            if i % modulo == 0:
-                print(n.span)
+            # print(str(j) + " | i: " + str(i) + " | shift: " + str(shift[counter - 1]) + " | base: " + str(base) + " | modulo: " + str(modulo) + " | base % modulo: " + str(base % modulo))
+            # j += 1
+            if i % modulo == base:
+                # print("passed")
                 i += 1
                 note = copy(n)
                 note.time = time
@@ -43,7 +44,7 @@ def snotes_to_notes_sieve(snotes, modulus):
             if counter >= len(modulus):
                 i += 1
                 break
-    print(len(output))
+    # print(len(output))
     return output
 
 # s-note: has a span but not a time

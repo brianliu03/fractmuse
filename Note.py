@@ -1,6 +1,6 @@
 class Note:
 
-    def __init__(self, time, dur, pitch, vel, chan=1, span=None, root=21, sieve=(1, 0)):
+    def __init__(self, time, dur, pitch, vel, chan=1, span=None, root=21, sieve=([1], [0])):
         self.time = time
         self.dur = dur
         self.pitch = pitch
@@ -22,14 +22,14 @@ class Note:
 
         return []
     
-    def createScale(self, degree, root, modulus, shift):
-        start = root + shift
+    def createScale(self, pitch, root, modulus, shift):
         counter = 0
         while True:
-            newPitch = degree % modulus[counter]
+            newPitch = pitch % modulus[counter]
+            base = shift[counter]
             counter += 1
-            if newPitch == 0:
-                return newPitch + start + degree
+            if newPitch == base:
+                return root + pitch
             if counter >= len(modulus):
                 break
         return None

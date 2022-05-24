@@ -22,9 +22,15 @@ def scale(modulus, shift):
     return output
 
 def main():
+    modulus=[12,12,12,12,12,12,12]
+    shift=[0,2,4,5,7,9,11]
+    # modulus=[3]
+    # shift=[1]
     interface = Interface(['MidiPipe Input 1'])
-    notes_1 = set(snotes_to_notes_sieve(scale(modulus=[2,3], shift=[0,0]), modulus=[2,3]))
+    notes_1 = snotes_to_notes_sieve(scale(modulus, shift), modulus, shift)
     print(len(notes_1))
+    for i in range(0, len(notes_1)):
+        print(notes_1[i].pitch)
     interface.play_notes(notes_1)
 
 main()
