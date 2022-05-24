@@ -4,7 +4,6 @@ import random
 from copy import copy
 
 # snote: a Note that has a span but not a time
-   
 
 
 def snotes_to_notes(snotes):
@@ -25,13 +24,26 @@ def snotes_to_notes_sieve(snotes, modulus):
     time = 0
     output = []
     i = 0
+    j = 0
     for n in snotes:
-        if i % modulus == 0:
-            note = copy(n)
-            note.time = time
-            time += n.span
-            output.append(note)
-        i += 1
+        counter = 0
+        while True:
+            modulo = modulus[counter]
+            counter +=  1
+            print(i, modulo, i % modulo, j)
+            j += 1
+            if i % modulo == 0:
+                print(n.span)
+                i += 1
+                note = copy(n)
+                note.time = time
+                time += n.span
+                output.append(note)
+                break
+            if counter >= len(modulus):
+                i += 1
+                break
+    print(len(output))
     return output
 
 # s-note: has a span but not a time
