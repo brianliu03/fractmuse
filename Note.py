@@ -13,7 +13,7 @@ class Note:
     def to_raws(self):
         if self.pitch is not None:
             modulus, shift = self.sieve
-            temp = self.createScale(self.pitch, self.root, modulus, shift)
+            temp = self.root + self.pitch
             if temp is not None:
                 return [
                     Raw(self.time, True, self.chan, temp, self.vel),
@@ -21,18 +21,6 @@ class Note:
                     ]
 
         return []
-    
-    def createScale(self, pitch, root, modulus, shift):
-        counter = 0
-        while True:
-            newPitch = pitch % modulus[counter]
-            base = shift[counter]
-            counter += 1
-            if newPitch == base:
-                return root + pitch
-            if counter >= len(modulus):
-                break
-        return None
 
 class Raw:
     def __init__(self, time, onOff, chan, pitch, vel):

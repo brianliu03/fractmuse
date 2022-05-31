@@ -1,3 +1,4 @@
+from cmath import exp
 import math
 from Note import Note
 import random
@@ -7,10 +8,6 @@ from copy import copy
 
 
 def snotes_to_notes(snotes):
-    '''Input arguments:
-    snotes: list of Note with span
-    Output: list of Note with time
-    '''
     time = 0
     output = []
     for n in snotes:
@@ -20,31 +17,79 @@ def snotes_to_notes(snotes):
         output.append(note)
     return output
 
-def snotes_to_notes_sieve(snotes, modulus, shift):
+def snotes_to_notes_sieve(snotes, modulus, shift, ascending):
     time = 0
     output = []
     i = 0
-    # j = 0
+    if not ascending:
+        i = 87
     for n in snotes:
         counter = 0
         while True:
             modulo = modulus[counter]
             base = shift[counter]
             counter +=  1
-            # print(str(j) + " | i: " + str(i) + " | shift: " + str(shift[counter - 1]) + " | base: " + str(base) + " | modulo: " + str(modulo) + " | base % modulo: " + str(base % modulo))
-            # j += 1
             if i % modulo == base:
-                # print("passed")
-                i += 1
+                if not ascending:
+                    i -= 1
+                else:
+                    i += 1
                 note = copy(n)
                 note.time = time
                 time += n.span
                 output.append(note)
                 break
             if counter >= len(modulus):
-                i += 1
+                if not ascending:
+                    i -= 1
+                else:
+                    i += 1
                 break
-    # print(len(output))
+    return output
+
+
+def snotes_to_notes_sieve_distribution(snotes, modulus, shift, ascending, inverted):
+    time = 0
+    output = []
+    i = 0
+    if not ascending:
+        i = 87
+    for n in snotes:
+        counter = 0
+        while True:
+            modulo = modulus[counter]
+            base = shift[counter]
+            counter +=  1
+            if i % modulo == base:
+                if not ascending:
+                    i -= 1
+                else:
+                    i += 1
+                note = copy(n)
+                note.time = time
+                time += n.span
+                output.append(note)
+                break
+            if counter >= len(modulus):
+                probability = (math.factorial(88) / (math.factorial(88-i) * math.factorial(i))) * (.5 ** i) * (0.5 ** (88 - i)) * 10
+                num = random.random()
+                if not inverted and num <= probability:
+                    print("passed")
+                    note = copy(n)
+                    note.time = time
+                    time += n.span
+                    output.append(note)
+                elif inverted and num >= probability:
+                    print("passed")
+                    note = copy(n)
+                    note.time = time
+                    time += n.span
+                    output.append(note)
+                if not ascending:
+                    i -= 1
+                else:
+                    i += 1
+                break
     return output
 
 # s-note: has a span but not a time
@@ -79,9 +124,8 @@ def snotes_to_notes_2(snotes):
             output_bot.append(note)
     final_out = output_top + output_bot
     return final_out
-    
 
-def expand(snotes, motif):
+def expand(snotes, motif, expPitch, expSpan, expVel):
     pitches = motif.pitches
     spans = motif.spans
     vels = motif.vels
@@ -89,13 +133,23 @@ def expand(snotes, motif):
     for n in snotes:
         for i in range(len(pitches)):
             n1 = copy(n)
-            n1.pitch += pitches[i]
-            n1.vel += vels[i]
-            n1.span *= spans[i]
-            output.append(n1)
+            if expPitch:
+                n1.pitch += pitches[i]
+            else:
+                n1.pitch = pitches[i]
+            if expSpan:
+                n1.span *= spans[i]
+            else:
+                n1.span = spans[i]
+            if expVel:
+                n1.vel += vels[i]
+            else:
+                n1.vel = vels[i]
+            if n1.pitch >= 0 and n1.pitch <= 87:
+                output.append(n1)
     return output
 
-def expand_rand(snotes, motif, rand):
+def expand_rand(snotes, motif, expPitch, expSpan, expVel, rand):
     pitches = motif.pitches
     spans = motif.spans
     vels = motif.vels
@@ -105,10 +159,20 @@ def expand_rand(snotes, motif, rand):
         if r < 0.7:
             for i in range(len(pitches)):
                 n1 = copy(n)
-                n1.pitch += pitches[i]
-                n1.vel += vels[i]
-                n1.span *= spans[i]
-                output.append(n1)
+                if expPitch:
+                    n1.pitch += pitches[i]
+                else:
+                    n1.pitch = pitches[i]
+                if expSpan:
+                    n1.span *= spans[i]
+                else:
+                    n1.span = spans[i]
+                if expVel:
+                    n1.vel += vels[i]
+                else:
+                    n1.vel = vels[i]
+                if n1.pitch >= 0 and n1.pitch <= 87:
+                    output.append(n1)
         else:
             output.append(n)
     return output
