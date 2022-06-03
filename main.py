@@ -3,14 +3,13 @@ import math
 from Interface import Interface
 from Note import Note
 from Motif import Motif
-from algo import snotes_to_notes_sieve, snotes_to_notes_sieve_distribution
+from algo import snotes_to_notes_sieve, snotes_to_notes_sieve_distribution, snotes_to_notes_sieve_split, snotes_to_notes
 from Comp import Notes_1
 import random
 
-def scale(modulus, shift, spans, ascending):
+def scale(modulus, shift, spans, direction):
     output = []
-    comp_1 = Notes_1(1, sieve=(modulus, shift), spans=spans, ascending=ascending)
-    # weighing rhythms too
+    comp_1 = Notes_1(1, sieve=(modulus, shift), spans=spans, direction=direction)
     # behavoirs morphing into other behavior
     # table that starts as arbitrary (e.g. poisson) distribution, then manipulate it by rotating for example
         # table of 12 tones starts with poisson distribution, then shift it up a tone
@@ -23,19 +22,14 @@ def scale(modulus, shift, spans, ascending):
     return output
 
 def main():
-    # modulus_0=[12,12,12,12,12,12,12]
-    # shift_0=[5,7,9,10,0,2,4]
-    # modulus_1=[10,10,10,10]
-    # shift_1=[1,2,5,9]
-    modulus_2=[6,9,7,4]
-    shift_2=[5,5,5,5]
-    spans_2=[0.5,0.1,0,0.75]
-    # modulus_3=[12,12,12,12,12,12,12]
-    # shift_3=[3,4,7,8,9,11,2]
+    modulus_2=[12,12,12,12]
+    shift_2=[3,7,10,15]
+    spans_2=[1,1,1,1]
+    direction=[39,27]
     interface = Interface(['MidiPipe Input 1'])
-    # notes_0 = snotes_to_notes_sieve(scale(modulus_0, shift_0, ascending=True), modulus_0, shift_0, ascending=True)
+    # notes_0 = snotes_to_notes(scale(modulus_0, shift_0, spans_0, ascending=True), modulus_0, shift_0, ascending=True)
     # notes_1 = snotes_to_notes_sieve(scale(modulus_1, shift_1, ascending=False), modulus_1, shift_1, ascending=False)
-    notes_2 = snotes_to_notes_sieve(scale(modulus_2, shift_2, spans_2, ascending=False), modulus_2, shift_2, ascending=False)
+    notes_2 = snotes_to_notes(scale(modulus_2, shift_2, spans_2, direction))
     # notes_3 = snotes_to_notes_sieve(scale(modulus_3, shift_3, ascending=True), modulus_3, shift_3, ascending=True)
 
 

@@ -1,6 +1,6 @@
 class Note:
 
-    def __init__(self, time, dur, pitch, vel, chan=1, span=None, root=21, sieve=([1], [0])):
+    def __init__(self, time, dur, pitch, vel, chan=1, span=None, root=21):
         self.time = time
         self.dur = dur
         self.pitch = pitch
@@ -8,11 +8,9 @@ class Note:
         self.span = span
         self.chan = chan
         self.root = root
-        self.sieve = sieve
 
     def to_raws(self):
         if self.pitch is not None:
-            modulus, shift = self.sieve
             temp = self.root + self.pitch
             if temp is not None:
                 return [

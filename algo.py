@@ -74,13 +74,11 @@ def snotes_to_notes_sieve_distribution(snotes, modulus, shift, ascending, invert
                 probability = (math.factorial(88) / (math.factorial(88-i) * math.factorial(i))) * (.5 ** i) * (0.5 ** (88 - i)) * 10
                 num = random.random()
                 if not inverted and num <= probability:
-                    print("passed")
                     note = copy(n)
                     note.time = time
                     time += n.span
                     output.append(note)
                 elif inverted and num >= probability:
-                    print("passed")
                     note = copy(n)
                     note.time = time
                     time += n.span
@@ -100,6 +98,50 @@ def snotes_to_notes_sieve_distribution(snotes, modulus, shift, ascending, invert
 # [A, C, E, G, I, ...] <- move this one up tritone
 # [B, D, F, H, J, ...] <- translate pitch an tritone down
 
+def snotes_to_notes_sieve_split(snotes, modulus, shift, ascending):
+    time_top = 0
+    time_bot = 0
+    output_top = []
+    output_bot = []
+    i = 0
+    if not ascending:
+        i = 87
+    for n in snotes:
+        counter = 0
+        while True:
+            modulo = modulus[counter]
+            base = shift[counter]
+            counter +=  1
+            if i % modulo == base:
+                if not ascending:
+                    i -= 1
+                else:
+                    i += 1
+                note = copy(n)
+                if i % 2 == 0:
+                    note.time = time_top
+                    note.pitch += 6
+                    note.chan = 1
+                    time_top += n.span
+                    if note.pitch >= 0 and note.pitch <= 87:
+                        output_top.append(note)
+                else:
+                    note.time = time_bot
+                    note.pitch -= 6
+                    note.chan = 2
+                    time_bot += n.span
+                    if note.pitch >= 0 and note.pitch <= 87:
+                        output_bot.append(note)
+                break
+            if counter >= len(modulus):
+                if not ascending:
+                    i -= 1
+                else:
+                    i += 1
+                break
+    final_out = output_top + output_bot
+    return final_out
+
 def snotes_to_notes_2(snotes):
     time_top = 0
     time_bot = 0
@@ -112,7 +154,6 @@ def snotes_to_notes_2(snotes):
             note.time = time_top
             note.pitch += 6
             note.chan = 1
-            # note = Note(time_top, n.dur, n.pitch + 6, n.vel, span=n.span, scale=n.scale)
             time_top += n.span
             output_top.append(note)
         else:
