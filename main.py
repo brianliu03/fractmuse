@@ -22,17 +22,17 @@ def scale(modulus, shift, spans, direction):
     return output
 
 def main():
-    modulus_2=[12,12,12,12]
-    shift_2=[3,7,10,15]
-    spans_2=[1,1,1,1]
-    direction=[39,27]
+    modulus_0=[12,12,12,12]
+    shift_0=[3,7,10,0]
+    spans_0=[1,1,1,1]
+    direction_0=[27,39]
     interface = Interface(['MidiPipe Input 1'])
-    # notes_0 = snotes_to_notes(scale(modulus_0, shift_0, spans_0, ascending=True), modulus_0, shift_0, ascending=True)
-    # notes_1 = snotes_to_notes_sieve(scale(modulus_1, shift_1, ascending=False), modulus_1, shift_1, ascending=False)
-    notes_2 = snotes_to_notes(scale(modulus_2, shift_2, spans_2, direction))
+    notes_0 = snotes_to_notes(scale(modulus_0, shift_0, spans_0, direction_0))
+    # notes_1 = snotes_to_notes(scale(modulus_1, shift_1, spans_1, direction_1))
+    # notes_2 = snotes_to_notes(scale(modulus_2, shift_2, spans_2, direction_2))
     # notes_3 = snotes_to_notes_sieve(scale(modulus_3, shift_3, ascending=True), modulus_3, shift_3, ascending=True)
 
 
-    interface.play_notes(notes_2)
+    interface.play_notes(notes_0)
 
 main()

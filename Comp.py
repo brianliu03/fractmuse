@@ -19,7 +19,7 @@ class Notes_1:
                     base = self.shift[counter]
                     counter +=  1
                     if i % modulo == base:
-                        self.motif.add(i, spans[counter], 60)
+                        self.motif.add(i, spans[counter - 1], 60)
                         i -= 1
                         break
                     if counter >= len(self.modulus):
@@ -33,7 +33,7 @@ class Notes_1:
                     base = self.shift[counter]
                     counter +=  1
                     if i % modulo == base:
-                        self.motif.add(i, spans[counter], 60)
+                        self.motif.add(i, spans[counter - 1], 60)
                         i += 1
                         break
                     if counter >= len(self.modulus):
