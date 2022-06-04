@@ -3,6 +3,7 @@ import math
 from Note import Note
 import random
 from copy import copy
+import queue
 
 # snote: a Note that has a span but not a time
 
@@ -14,6 +15,16 @@ def snotes_to_notes(snotes):
         note = copy(n)
         note.time = time
         time += n.span
+        output.append(note)
+    return output
+
+def snotes_to_notes_interpolate(snotes, order):
+    time = 0
+    output = []
+    for num in order:
+        note = copy(snotes[num].get())
+        note.time = time
+        time += note.span
         output.append(note)
     return output
 
