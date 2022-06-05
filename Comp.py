@@ -1,5 +1,5 @@
 from cmath import exp
-from algo import expand, expand_rand, randPoisDistribution
+from algo import expand, expand_rand, randPoisDistribution, expand2
 from Motif import Motif
 from Note import Note
 from copy import copy
@@ -46,6 +46,8 @@ class Notes_1:
         my_list = []
         my_list.append(Note(None, 0.5, 0, 0, span=0.5, root=21))
         for i in range(self.num_expansions):
-            # my_list = expand_rand(my_list, self.motif, expPitch=True, expSpan=True, expVel=False, rand=self.rand)
-            my_list = expand(my_list, self.motif, expPitch=True, expSpan=True, expVel=False)
+            if i == 0:
+                my_list = expand(my_list, self.motif, expPitch=True, expSpan=True, expVel=False)
+            else:
+                my_list = expand2(my_list, self.motif, expPitch=True, expSpan=True, expVel=False)
         return my_list

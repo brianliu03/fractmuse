@@ -10,7 +10,7 @@ import queue
 
 def scale(modulus, shift, spans, direction):
     output = []
-    comp_1 = Notes_1(1, sieve=(modulus, shift), spans=spans, direction=direction)
+    comp_1 = Notes_1(3, sieve=(modulus, shift), spans=spans, direction=direction)
     # behavoirs morphing into other behavior
     # table that starts as arbitrary (e.g. poisson) distribution, then manipulate it by rotating for example
         # table of 12 tones starts with poisson distribution, then shift it up a tone
@@ -40,7 +40,7 @@ def main():
         q1.put(n)
     for n in notes_1:
         q2.put(n)
-    notes_0 = snotes_to_notes_interpolate([q1,q2], [0,0,1,1,0,1,0])
+    notes_0 = snotes_to_notes_interpolate([q1,q2], [0,0,1,1,0,1,0,0,0,1,1,0,1,0,0,0,1,1,0,1,0,0,0,1,1,0,1,0,0,0,1,1,0,1,0,0,0,1,1,0,1,0])
     # notes_1 = snotes_to_notes(scale(modulus_1, shift_1, spans_1, direction_1))
     # notes_2 = snotes_to_notes(scale(modulus_2, shift_2, spans_2, direction_2))
     # notes_3 = snotes_to_notes_sieve(scale(modulus_3, shift_3, ascending=True), modulus_3, shift_3, ascending=True)
