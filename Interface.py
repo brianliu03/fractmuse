@@ -26,6 +26,14 @@ class Interface:
                 time.sleep(t-curr_time)
                 curr_time = t
             self.midiout.send_message(r.to_message())
+    
+    def play_raw_control_change(self, raws_in):
+        curr_time = 0.0
+        for r in raws_in:
+            t = r.time + curr_time
+            time.sleep(t-curr_time)
+            curr_time += t
+            self.midiout.send_message(r)
 
     def play_snotes(self, notes_in):
         notes_in = snotes_to_notes(notes_in)

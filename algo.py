@@ -18,15 +18,32 @@ def snotes_to_notes(snotes):
         output.append(note)
     return output
 
+def snotes_to_notes_mfile(snotes):
+    output = []
+    for n in snotes:
+        note = copy(n)
+        note.time = n.span
+        output.append(note)
+    return output
+
 def snotes_to_notes_interpolate(snotes, order):
+    d = { }
+    for i in range(0, len(snotes)):
+        d["q{0}".format(i)] = queueify(snotes[i])
     time = 0
     output = []
     for num in order:
-        note = copy(snotes[num].get())
+        note = copy(d["q{0}".format(num)].get())
         note.time = time
         time += note.span
         output.append(note)
     return output
+
+def queueify(snotes):
+    q = queue.Queue()
+    for n in snotes:
+        q.put(n)
+    return q
 
 def snotes_to_notes_sieve(snotes, modulus, shift, ascending):
     time = 0
