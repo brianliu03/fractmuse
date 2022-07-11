@@ -1,11 +1,7 @@
-from cmath import exp
 import math
-from Note import Note
 import random
 from copy import copy
 import queue
-
-# snote: a Note that has a span but not a time
 
 
 def snotes_to_notes(snotes):
@@ -170,7 +166,7 @@ def snotes_to_notes_sieve_split(snotes, modulus, shift, ascending):
     final_out = output_top + output_bot
     return final_out
 
-def snotes_to_notes_2(snotes):
+def snotes_to_notes_tritones(snotes):
     time_top = 0
     time_bot = 0
     output_top = []
@@ -194,7 +190,7 @@ def snotes_to_notes_2(snotes):
     final_out = output_top + output_bot
     return final_out
 
-def expand(snotes, motif, expPitch, expSpan, expVel):
+def expand(snotes, motif, expPitch, expSpan, expVel, offset):
     pitches = motif.pitches
     spans = motif.spans
     vels = motif.vels
@@ -214,33 +210,11 @@ def expand(snotes, motif, expPitch, expSpan, expVel):
                 n1.vel += vels[i]
             else:
                 n1.vel = vels[i]
-            if n1.pitch >= 0 and n1.pitch <= 87:
+            if n1.pitch >= 0 + offset and n1.pitch <= 87 + offset:
                 output.append(n1)
     return output
 
-def expand_test_midi(snotes, motif, expPitch, expSpan, expVel):
-    pitches = motif.pitches
-    spans = motif.spans
-    vels = motif.vels
-    output = []
-    for n in snotes:
-        for i in range(len(pitches)):
-            n1 = copy(n)
-            if expPitch:
-                n1.pitch += pitches[i]
-            else:
-                n1.pitch = pitches[i]
-            if expSpan:
-                n1.span *= spans[i]
-            else:
-                n1.span = spans[i]
-            if expVel:
-                n1.vel += vels[i]
-            else:
-                n1.vel = vels[i]
-            output.append(n1)
-    return output
-
+# what is this for???
 def expand2(snotes, motif, expPitch, expSpan, expVel):
     pitches = motif.pitches
     spans = motif.spans

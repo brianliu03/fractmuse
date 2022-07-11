@@ -55,7 +55,7 @@ class Notes_1:
         my_list.append(Note(None, 0.25, 0, 0, span=0.5, root=21))
         for i in range(self.num_expansions):
             if i == 0:
-                my_list = expand(my_list, self.motif, expPitch=True, expSpan=True, expVel=False)
+                my_list = expand(my_list, self.motif, expPitch=True, expSpan=True, expVel=False, offset=0)
             else:
-                my_list = expand2(my_list, self.motif, expPitch=True, expSpan=True, expVel=False)
+                my_list = expand2(my_list, self.motif, expPitch=True, expSpan=True, expVel=False, offset=0)
         return my_list
