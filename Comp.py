@@ -1,4 +1,5 @@
 from cmath import exp
+from Markov_Algo import MarkovGenerator
 from algo import expand, expand_rand, randPoisDistribution, expand2
 from Motif import Motif
 from Note import Note
@@ -26,7 +27,7 @@ class Notes_1:
                         i -= 1
                         break
         else:
-            for i in range(start,end+1):
+            for i in range(start,end):
                 counter = 0
                 while True:
                     modulo = self.modulus[counter]
@@ -41,10 +42,17 @@ class Notes_1:
                         break
         self.num_expansions = num_expansions
         self.rand = random.Random(101)
+
+    def markovify(self, order, start):
+        pitches = self.motif.pitches
+        gen = MarkovGenerator(len(pitches), 88, order, 0)
+        gen.generateTable(pitches)
+        self.motif.pitches = gen.createComp(start)
+
     
     def run(self):
         my_list = []
-        my_list.append(Note(None, 0.5, 0, 0, span=0.5, root=21))
+        my_list.append(Note(None, 0.25, 0, 0, span=0.5, root=21))
         for i in range(self.num_expansions):
             if i == 0:
                 my_list = expand(my_list, self.motif, expPitch=True, expSpan=True, expVel=False)

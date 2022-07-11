@@ -218,6 +218,29 @@ def expand(snotes, motif, expPitch, expSpan, expVel):
                 output.append(n1)
     return output
 
+def expand_test_midi(snotes, motif, expPitch, expSpan, expVel):
+    pitches = motif.pitches
+    spans = motif.spans
+    vels = motif.vels
+    output = []
+    for n in snotes:
+        for i in range(len(pitches)):
+            n1 = copy(n)
+            if expPitch:
+                n1.pitch += pitches[i]
+            else:
+                n1.pitch = pitches[i]
+            if expSpan:
+                n1.span *= spans[i]
+            else:
+                n1.span = spans[i]
+            if expVel:
+                n1.vel += vels[i]
+            else:
+                n1.vel = vels[i]
+            output.append(n1)
+    return output
+
 def expand2(snotes, motif, expPitch, expSpan, expVel):
     pitches = motif.pitches
     spans = motif.spans

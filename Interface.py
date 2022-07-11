@@ -1,6 +1,7 @@
 import rtmidi
 import time
 from algo import snotes_to_notes, snotes_to_notes_2
+from midiutil import MIDIFile
 
 class Interface:
 
@@ -50,3 +51,15 @@ class Interface:
             if events is not None:
                 accum += events
         self.play_raw(accum)
+
+    def create_file(self, notes_in):
+        midi = MIDIFile(1)
+        track = 0
+        channel = 0
+        midi.addTempo(track, 0, 60)
+
+        for n in notes_in:
+            midi.addNote(track, channel, n.pitch + 21, n.time, n.dur, n.vel)
+        
+        with open("comp.mid", "wb") as output_file:
+            midi.writeFile(output_file)
