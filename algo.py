@@ -14,14 +14,6 @@ def snotes_to_notes(snotes):
         output.append(note)
     return output
 
-def snotes_to_notes_mfile(snotes):
-    output = []
-    for n in snotes:
-        note = copy(n)
-        note.time = n.span
-        output.append(note)
-    return output
-
 def snotes_to_notes_interpolate(snotes, order):
     d = { }
     for i in range(0, len(snotes)):
