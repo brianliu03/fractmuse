@@ -4,7 +4,7 @@ import scipy as sp
 from Interface import Interface
 from Motif import Motif
 from Note import Note
-from algo import expand, expand_test_midi, snotes_to_notes, snotes_to_notes_mfile
+from algo import expand, snotes_to_notes
 from Markov_Algo import MarkovGenerator
 
 def main():
@@ -45,7 +45,7 @@ def main():
         comp_1.spans[i] = comp_1.spans[i] / 100
 
     my_list.append(Note(None, 1.0, 0, 0, span=1, root=0))
-    my_list = expand_test_midi(my_list, comp_1, expPitch=True, expSpan=True, expVel=False)
+    my_list = expand(my_list, comp_1, expPitch=True, expSpan=True, expVel=False)
     my_list = snotes_to_notes(my_list)
 
     interface.play_notes(my_list)

@@ -1,12 +1,8 @@
-import time
 from mido import MidiFile
-import scipy as sp
-from sympy import comp
-from yaml import Mark
 from Interface import Interface
 from Motif import Motif
 from Note import Note
-from algo import expand, snotes_to_notes, snotes_to_notes_mfile
+from algo import expand, snotes_to_notes
 from Markov_Algo import MarkovGenerator
 
 def main():
