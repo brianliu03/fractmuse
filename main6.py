@@ -1,5 +1,5 @@
 from Interface import Interface
-from algo import expandSnotes,expandSnotesNoSpan, interpolate, addDistribution, snotes_to_notes, snotes_to_notes_tritones
+from algo import expandSnotes,expandSnotesNoSpan, interpolate, addDistribution, snotesToNotes, snotesToNotesTritones
 from Comp import Notes_1
 
 def scale(modulus, shift, spans, direction):

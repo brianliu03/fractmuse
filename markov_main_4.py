@@ -2,7 +2,7 @@ from mido import MidiFile
 from Interface import Interface
 from Motif import Motif
 from Note import Note
-from algo import expand, snotes_to_notes, snotes_to_notes_tritones
+from algo import expand, snotesToNotes, snotesToNotesTritones
 from Markov_Algo import MarkovGenerator
 
 def main():
@@ -46,7 +46,7 @@ def main():
 
     my_list.append(Note(None, 1.0, 0, 0, span=1, root=0))
     my_list = expand(my_list, comp_1, expPitch=True, expSpan=True, expVel=False, offset=21)
-    my_list = snotes_to_notes(my_list)
+    my_list = snotesToNotes(my_list)
     interface.play_notes(my_list)
 
 main()

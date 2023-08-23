@@ -4,8 +4,10 @@ from copy import copy
 import queue
 import time
 
-
-def snotes_to_notes(snotes):
+# snotes are with span instead of time
+# which are easier for composers to work with
+# midi notes are with time instead of span
+def snotesToNotes(snotes):
     time = 0
     output = []
     for n in snotes:
@@ -14,7 +16,8 @@ def snotes_to_notes(snotes):
         time += n.span
         output.append(note)
     return output
-def snotes_to_notes_offset(snotes, offset):
+
+def snotesToNotesWithOffset(snotes, offset):
     time = offset
     output = []
     for n in snotes:
@@ -75,7 +78,7 @@ def addDistribution(snotes, modulus, shift, ascending, inverted):
                 break
     return output
 
-def snotes_to_notes_tritones(snotes):
+def snotesToNotesTritones(snotes):
     time_top = 0
     time_bot = 0
     output_top = []

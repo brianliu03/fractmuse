@@ -1,5 +1,5 @@
 from Interface import Interface
-from algo import expand, interpolate, addDistribution, snotes_to_notes
+from algo import expand, interpolate, addDistribution, snotesToNotes
 from Comp import Notes_1
 
 def scale(modulus, shift, spans, direction):
@@ -22,7 +22,7 @@ def main():
     interface = Interface(['MidiPipe Input 1'])
 
     notes = interpolate([scale(modulus_0, shift_0, spans_0, direction_0),scale(modulus_1, shift_1, spans_1, direction_1)],order)
-    notes = snotes_to_notes(notes)
+    notes = snotesToNotes(notes)
 
     interface.play_notes(notes)
 

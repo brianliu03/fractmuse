@@ -4,7 +4,7 @@ import scipy as sp
 from Interface import Interface
 from Motif import Motif
 from Note import Note
-from algo import expand, snotes_to_notes
+from algo import expand, snotesToNotes
 from Markov_Algo import MarkovGenerator
 
 def main():

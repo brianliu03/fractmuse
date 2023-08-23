@@ -1,6 +1,6 @@
 import time
 from Interface import Interface
-from algo import expandSnotes,expandSnotesNoSpan, interpolate, addDistribution, snotes_to_notes, snotes_to_notes_tritones
+from algo import expandSnotes,expandSnotesNoSpan, interpolate, addDistribution, snotesToNotes, snotesToNotesTritones
 from Comp import Notes_1
 
 def scale(modulus, shift, spans, direction):
@@ -52,14 +52,14 @@ def main():
 
     notes_5 = scale2(modulus_2, shift_2, spans_2, direction_2)
 
-    notes_0 = snotes_to_notes_tritones(notes_0)
+    notes_0 = snotesToNotesTritones(notes_0)
     interface.play_notes(notes_0)
     interface.play_snotes(notes_1)
-    notes_5 = snotes_to_notes_tritones(notes_5)
+    notes_5 = snotesToNotesTritones(notes_5)
     interface.play_notes(notes_5)
     time.sleep(0.25)
     interface.play_snotes(notes_4)
-    notes_3 = snotes_to_notes(notes_3)
+    notes_3 = snotesToNotes(notes_3)
     interface.play_notes(notes_3 + notes_0)
 
 main()

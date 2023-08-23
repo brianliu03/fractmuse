@@ -1,6 +1,6 @@
 import rtmidi
 import time
-from algo import snotes_to_notes, snotes_to_notes_tritones
+from algo import snotesToNotes, snotesToNotesTritones
 from midiutil import MIDIFile
 
 class Interface:
@@ -37,7 +37,7 @@ class Interface:
             self.midiout.send_message(r)
 
     def play_snotes(self, notes_in):
-        notes_in = snotes_to_notes(notes_in)
+        notes_in = snotesToNotes(notes_in)
         accum = []
         for n in notes_in:
             events = n.to_raws()

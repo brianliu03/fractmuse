@@ -1,6 +1,6 @@
 import time
 from Interface import Interface
-from algo import interpolate, addDistribution, snotes_to_notes, snotes_to_notes_tritones
+from algo import interpolate, addDistribution, snotesToNotes, snotesToNotesTritones
 from Comp import Notes_1
 
 def scale(modulus, shift, spans, direction):
@@ -29,12 +29,12 @@ def main():
     order = [0,1,0,1,0,1,1,0,1,0,1,0,0,1,0,0]
     order2 = [0,1,0,1,0,1,1,0,1,0,1,0,0,1,0,0,0,1,0,1,0,1,1,0,1,0,1,0,0,1,0,0,0,1,0,1,0,1,1,0,1,0,1,0,0,1,0,0,0,1,0,1,0,1,1,0,1,0,1,0,0,1,0,0,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     interface = Interface(['MidiPipe Input 1'])
-    notes_0 = snotes_to_notes(scale(modulus_0, shift_0, spans_0, direction_0))
-    notes_1 = snotes_to_notes(scale(modulus_1, shift_1, spans_1, direction_1))
+    notes_0 = snotesToNotes(scale(modulus_0, shift_0, spans_0, direction_0))
+    notes_1 = snotesToNotes(scale(modulus_1, shift_1, spans_1, direction_1))
     notes_2 = interpolate([notes_0, notes_1], order)
     direction_0 = [44, 74]
     direction_1 = [44, 74]
-    notes_3 = interpolate([snotes_to_notes(scale2(modulus_0, shift_0, spans_0, direction_0)), snotes_to_notes(scale2(modulus_1, shift_1, spans_1, direction_1))], order2)
+    notes_3 = interpolate([snotesToNotes(scale2(modulus_0, shift_0, spans_0, direction_0)), snotesToNotes(scale2(modulus_1, shift_1, spans_1, direction_1))], order2)
 
 
     interface.play_notes(notes_0)
