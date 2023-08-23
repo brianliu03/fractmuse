@@ -6,7 +6,7 @@ from algo import expand, snotes_to_notes
 from Markov_Algo import MarkovGenerator
 
 def main():
-    mid = MidiFile('/Users/brianliu03/Documents/midi_files/sonata_58_1_(c)finley.mid', clip=True)
+    mid = MidiFile('/Users/brianliu03/Documents/Projects/FractMuse-01/midi_files/mozart_sonata_9_1stmvt_k311_PNO.mid', clip=True)
     interface = Interface(['MidiPipe Input 1'])
 
     motif = Motif([], [], [])
@@ -36,6 +36,7 @@ def main():
     genSpans = MarkovGenerator(len(motif.spans), int(maxSpan * 100) + 1, 1, 0)
     genSpans.generateTableSpans(motif.spans)
     genPitches = MarkovGenerator(len(motif.pitches), 88, 1, 21)
+    print(max(motif.pitches))
     genPitches.generateTable(motif.pitches)
     genVels = MarkovGenerator(len(motif.vels), 128, 1, 0)
     genVels.generateTable(motif.vels)

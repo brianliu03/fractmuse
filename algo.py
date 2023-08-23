@@ -2,10 +2,20 @@ import math
 import random
 from copy import copy
 import queue
+import time
 
 
 def snotes_to_notes(snotes):
     time = 0
+    output = []
+    for n in snotes:
+        note = copy(n)
+        note.time = time
+        time += n.span
+        output.append(note)
+    return output
+def snotes_to_notes_offset(snotes, offset):
+    time = offset
     output = []
     for n in snotes:
         note = copy(n)
@@ -113,8 +123,48 @@ def expand(snotes, motif, expPitch, expSpan, expVel, offset):
                 output.append(n1)
     return output
 
+def expandSnotes(snotes, motif, low, high):
+    pitches = []
+    spans = []
+    vels = []
+    output = []
+    for note in motif:
+        pitches.append(note.pitch)
+        spans.append(note.span)
+        vels.append(note.vel)
+    i = 0
+    for n in snotes:
+        for i in range(len(pitches)):
+            n1 = copy(n)
+            n1.pitch += pitches[i]
+            n1.span *= spans[i]
+            n1.vel = vels[i]
+            if n1.pitch >= low and n1.pitch <= high:
+                output.append(n1)
+    return output
+def expandSnotesNoSpan(snotes, motif, low, high):
+    pitches = []
+    spans = []
+    vels = []
+    output = []
+    for note in motif:
+        pitches.append(note.pitch)
+        spans.append(note.span)
+        vels.append(note.vel)
+    i = 0
+    for n in snotes:
+        for i in range(len(pitches)):
+            n1 = copy(n)
+            n1.pitch += pitches[i]
+            n1.span = spans[i]
+            n1.vel = vels[i]
+            if n1.pitch >= low and n1.pitch <= high:
+                output.append(n1)
+    return output
+
+
 # what is this for???
-def expand2(snotes, motif, expPitch, expSpan, expVel):
+def expand2(snotes, motif, expPitch, expSpan, expVel, offset):
     pitches = motif.pitches
     spans = motif.spans
     vels = motif.vels
@@ -135,7 +185,7 @@ def expand2(snotes, motif, expPitch, expSpan, expVel):
                 n1.vel += vels[i]
             else:
                 n1.vel = vels[i]
-            if n1.pitch >= 0 and n1.pitch <= 87:
+            if n1.pitch >= 0 + offset and n1.pitch <= 87 + offset:
                 output.append(n1)
     return output
 
@@ -187,3 +237,17 @@ def randPoisDistribution(snotes, motif):
                 output.append(n1)
             # i = i + 1
     return output
+
+def setMidC(pitches):
+    newPitches = []
+    for pitch in pitches:
+        pitch -= 60
+        newPitches.append(pitch)
+    return newPitches
+
+def revertMidC(pitches):
+    newPitches = []
+    for pitch in pitches:
+        pitch += 60
+        newPitches.append(pitch)
+    return newPitches

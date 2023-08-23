@@ -1,9 +1,8 @@
-import time
 from mido import MidiFile
 from Interface import Interface
 from Motif import Motif
 from Note import Note
-from algo import expand, snotes_to_notes
+from algo import expand, snotes_to_notes, snotes_to_notes_tritones
 from Markov_Algo import MarkovGenerator
 
 def main():
@@ -33,20 +32,21 @@ def main():
         motif.add(msg.note, span, msg.velocity)
         i += 1
 
-
-    gen = MarkovGenerator(len(motif.spans), 141, 1, 0)
-    gen.generateTableSpans(motif.spans)
-    spans = [1]*(4700000)
-    vels = [70]*(4670000)
-    comp_1 = Motif(motif.pitches, gen.createComp(int(round(motif.spans[0], 2)) * 100), vels)
+    maxSpan = max(motif.spans)
+    genSpans = MarkovGenerator(len(motif.spans), int(maxSpan * 100) + 1, 1, 0)
+    genSpans.generateTableSpans(motif.spans)
+    genPitches = MarkovGenerator(len(motif.pitches), 88, 1, 21)
+    genPitches.generateTable(motif.pitches)
+    genVels = MarkovGenerator(len(motif.vels), 128, 1, 0)
+    genVels.generateTable(motif.vels)
+    comp_1 = Motif(genPitches.createComp(62), genSpans.createComp(int(round(motif.spans[0], 2)) * 100), genVels.createComp(motif.vels[0]))
     my_list = []
     for i in range(len(comp_1.spans)):
         comp_1.spans[i] = comp_1.spans[i] / 100
 
     my_list.append(Note(None, 1.0, 0, 0, span=1, root=0))
-    my_list = expand(my_list, comp_1, expPitch=True, expSpan=True, expVel=False)
+    my_list = expand(my_list, comp_1, expPitch=True, expSpan=True, expVel=False, offset=21)
     my_list = snotes_to_notes(my_list)
-
     interface.play_notes(my_list)
 
 main()

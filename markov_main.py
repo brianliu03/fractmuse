@@ -13,43 +13,41 @@ def main():
     # motif = Motif([], [], [])
     rh = Motif([], [], [])
     lh = Motif([], [], [])
-    time_ = 0
+    notes = []
+    times = []
+    tim = 0
     for msg in mid:
-        time_ += msg.time
+        tim += msg.time
         if msg.type == "note_on":
-                if msg.note < 60:
-                    lh.add(msg.note, time_, msg.velocity)
-                else:
-                    rh.add(msg.note, time_, msg.velocity)
+            notes.append(msg)
+            times.append(tim)
+    offset = times[0]
+    times[:] = [time - offset for time in times]
 
-    
-    genRH = MarkovGenerator(len(rh.pitches), 88, 1, 21)
-    genLH = MarkovGenerator(len(lh.pitches), 88, 1, 21)
+    delta = times[len(times) - 1] - times[0]
+    i = 0
+    for msg in notes:
+        if i == len(notes) - 1:
+            span = 0
+        else:
+            span = delta - times[i] - (delta - times[i + 1])
+        motif.add(msg.note, span, msg.velocity)
+        i += 1
 
-    genRH.generateTable(rh.pitches)
-    genLH.generateTable(lh.pitches)
+    maxSpan = max(motif.spans)
+    genSpans = MarkovGenerator(len(motif.spans), int(maxSpan * 100) + 2, 1, 0)
+    genSpans.generateTableSpans(motif.spans)
+    genPitches = MarkovGenerator(len(motif.pitches), 88, 1, 21)
+    genPitches.generateTable(motif.pitches)
+    genVels = MarkovGenerator(len(motif.vels), 128, 1, 0)
+    genVels.generateTable(motif.vels)
+    comp_1 = Motif(genPitches.createComp(61), genSpans.createComp(int(round(motif.spans[0], 2)) * 100), genVels.createComp(motif.vels[0]))
+    my_list = []
+    for i in range(len(comp_1.spans)):
+        comp_1.spans[i] = comp_1.spans[i] / 100
 
-    spansRH = [1]*(4700000) # len(motif.pitches) + 1
-    velsRH = [70]*(4670000)
-    spansLH = [1]*(4700000) # len(motif.pitches) + 1
-    velsLH = [70]*(4670000)
-
-    comp_1RH = Motif(genRH.createComp(62), spansRH, velsRH)
-    comp_1LH = Motif(genLH.createComp(38), spansLH, velsLH)
-
-    my_listRH = []
-    my_listRH.append(Note(None, 0.5, 0, 0, span=0.25, root=0))
-    my_listRH = expand(my_listRH, comp_1RH, expPitch=True, expSpan=True, expVel=False)
-    my_listRH = snotes_to_notes(my_listRH)
-
-    my_listLH = []
-    my_listLH.append(Note(None, 0.5, 0, 0, span=0.25, root=0))
-    my_listLH = expand(my_listLH, comp_1LH, expPitch=True, expSpan=True, expVel=False)
-    my_listLH = snotes_to_notes(my_listLH)
-
-    my_list = my_listRH + my_listLH
-
+    my_list.append(Note(None, 1.0, 0, 0, span=1, root=0))
+    my_list = expand(my_list, comp_1, expPitch=True, expSpan=True, expVel=False, offset=21)
     interface.play_notes(my_list)
-
 
 main()
