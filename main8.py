@@ -1,5 +1,5 @@
 import time
-from Interface import Interface
+from Midi_Interface import MidiInterface
 from algo import expandSnotes,expandSnotesNoSpan, interpolate, addDistribution, snotesToNotes, snotesToNotesWithOffset, snotesToNotesTritones
 from Comp import Notes_1
 
@@ -18,7 +18,7 @@ def scale2(modulus, shift, spans, direction):
     return output
 
 def main():
-    interface = Interface(['MidiPipe Input 1'])
+    interface = MidiInterface(['MidiPipe Input 1'])
 
     modulus_0=[5,6,10]
     shift_0=[2,2,8]
@@ -34,7 +34,7 @@ def main():
     notes_1 = scale2(modulus_1, shift_1, spans_1, direction_1)
     notes_0 = snotesToNotes(notes_0)
     notes_1 = snotesToNotes(notes_1)
-    interface.play_notes(notes_0 + notes_1)
+    interface.playNotes(notes_0 + notes_1)
     
     time.sleep(0.6)
 
@@ -44,7 +44,7 @@ def main():
     notes_1 = scale2(modulus_1, shift_1, spans_1, direction_1)
     notes_0 = snotesToNotes(notes_0)
     notes_1 = snotesToNotes(notes_1)
-    interface.play_notes(notes_0 + notes_1)
+    interface.playNotes(notes_0 + notes_1)
 
     direction_0 = [30,80]
     direction_1 = [70,30]
@@ -52,7 +52,7 @@ def main():
     notes_1 = scale2(modulus_1, shift_1, spans_1, direction_1)
     notes_0 = snotesToNotesTritones(notes_0)
     notes_1 = snotesToNotesTritones(notes_1)
-    interface.play_notes(notes_1 + notes_0)
+    interface.playNotes(notes_1 + notes_0)
 
     direction_0=[0,88]
     direction_1=[88,0]
@@ -73,7 +73,7 @@ def main():
     
     print(len(notes_2), len(notes_0), len(notes_1))
     notes_2 = notes_2[:30]
-    interface.play_notes(notes_2 + notes_0 + notes_1)
+    interface.playNotes(notes_2 + notes_0 + notes_1)
 
     spans_0=[.75,0.5,1.2]
     direction_0 = [45,55]
@@ -99,7 +99,7 @@ def main():
     direction_0 = [57,30]
     notes_1 = scale(modulus_0, shift_0, spans_0, direction_0)
     notes_1 = snotesToNotesWithOffset(notes_1, notes_0[len(notes_0) - 1].time + notes_0[len(notes_0) - 1].span)
-    interface.play_notes(notes_3 + notes_0 + notes_1)
+    interface.playNotes(notes_3 + notes_0 + notes_1)
     
 
     

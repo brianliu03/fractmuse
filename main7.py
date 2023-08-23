@@ -1,5 +1,5 @@
 import time
-from Interface import Interface
+from Midi_Interface import MidiInterface
 from algo import expandSnotes,expandSnotesNoSpan, interpolate, addDistribution, snotesToNotes, snotesToNotesTritones
 from Comp import Notes_1
 
@@ -34,7 +34,7 @@ def main():
     direction_2=[10,50]
 
     # order = [1,0,0,1,1]
-    interface = Interface(['MidiPipe Input 1'])
+    interface = MidiInterface(['MidiPipe Input 1'])
     notes_0 = scale(modulus_0, shift_0, spans_0, direction_0)
     notes_1 = scale2(modulus_1, shift_1, spans_1, direction_1)
     notes_2 = scale2(modulus_2, shift_2, spans_2, direction_2)
@@ -53,13 +53,13 @@ def main():
     notes_5 = scale2(modulus_2, shift_2, spans_2, direction_2)
 
     notes_0 = snotesToNotesTritones(notes_0)
-    interface.play_notes(notes_0)
-    interface.play_snotes(notes_1)
+    interface.playNotes(notes_0)
+    interface.playSnotes(notes_1)
     notes_5 = snotesToNotesTritones(notes_5)
-    interface.play_notes(notes_5)
+    interface.playNotes(notes_5)
     time.sleep(0.25)
-    interface.play_snotes(notes_4)
+    interface.playSnotes(notes_4)
     notes_3 = snotesToNotes(notes_3)
-    interface.play_notes(notes_3 + notes_0)
+    interface.playNotes(notes_3 + notes_0)
 
 main()

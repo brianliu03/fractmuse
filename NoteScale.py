@@ -1,4 +1,3 @@
-
 # express the idea of the following choices:
 # major scale? if so , root? ('major', <root>)
 # melodic minor? if so, root? ('melodic minor', <root>)

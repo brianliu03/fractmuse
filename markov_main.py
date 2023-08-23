@@ -1,7 +1,7 @@
 import time
 from mido import MidiFile
 import scipy as sp
-from Interface import Interface
+from Midi_Interface import MidiInterface
 from Motif import Motif
 from Note import Note
 from algo import expand, snotesToNotes
@@ -9,7 +9,7 @@ from Markov_Algo import MarkovGenerator
 
 def main():
     mid = MidiFile('/Users/brianliu03/Documents/midi_files/mozart_sonata_9_1stmvt_k311_PNO.mid', clip=True)
-    interface = Interface(['MidiPipe Input 1'])
+    interface = MidiInterface(['MidiPipe Input 1'])
     # motif = Motif([], [], [])
     rh = Motif([], [], [])
     lh = Motif([], [], [])
@@ -48,6 +48,6 @@ def main():
 
     my_list.append(Note(None, 1.0, 0, 0, span=1, root=0))
     my_list = expand(my_list, comp_1, expPitch=True, expSpan=True, expVel=False, offset=21)
-    interface.play_notes(my_list)
+    interface.playNotes(my_list)
 
 main()

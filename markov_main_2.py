@@ -1,6 +1,6 @@
 import time
 from mido import MidiFile
-from Interface import Interface
+from Midi_Interface import MidiInterface
 from Motif import Motif
 from Note import Note
 from algo import expand, snotesToNotes
@@ -8,7 +8,7 @@ from Markov_Algo import MarkovGenerator
 
 def main():
     mid = MidiFile('/Users/brianliu03/Documents/Projects/FractMuse-01/midi_files/mozart_sonata_9_1stmvt_k311_PNO.mid', clip=True)
-    interface = Interface(['MidiPipe Input 1'])
+    interface = MidiInterface(['MidiPipe Input 1'])
 
     motif = Motif([], [], [])
 
@@ -47,6 +47,6 @@ def main():
     my_list = expand(my_list, comp_1, expPitch=True, expSpan=True, expVel=False)
     my_list = snotesToNotes(my_list)
 
-    interface.play_notes(my_list)
+    interface.playNotes(my_list)
 
 main()

@@ -1,4 +1,4 @@
-from Interface import Interface
+from Midi_Interface import MidiInterface
 from Note import Note
 from Motif import Motif
 from algo import expand, snotesToNotes, snotesToNotesTritones
@@ -16,8 +16,8 @@ def full_composition_01():
     return output
 
 def main():
-    interface = Interface(['MidiPipe Input 1'])
+    interface = MidiInterface(['MidiPipe Input 1'])
     notes = snotesToNotesTritones(full_composition_01())
-    interface.play_notes(notes)
+    interface.playNotes(notes)
 
 main()

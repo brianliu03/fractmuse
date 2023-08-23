@@ -1,4 +1,4 @@
-from Interface import Interface
+from Midi_Interface import MidiInterface
 from algo import interpolate, addDistribution, snotesToNotes
 from Comp import Notes_1
 
@@ -15,11 +15,11 @@ def main():
     spans_0=[0.5,0.5,0.5,0.5,0.5,0.5,0.5]
     direction_0=[30,60]
     # randomize order
-    interface = Interface(['MidiPipe Input 1'])
+    interface = MidiInterface(['MidiPipe Input 1'])
 
     notes = snotesToNotes(scale(modulus_0, shift_0, spans_0, direction_0))
 
-    interface.play_notes(notes)
+    interface.playNotes(notes)
 
 main()
 
