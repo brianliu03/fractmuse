@@ -1,7 +1,7 @@
 from cmath import exp
 import time
-from Markov_Algo import MarkovGenerator
-from algo import expand, expand_rand, randPoisDistribution, expand2, revertMidC, setMidC
+from algorithms.Markov_Algo import MarkovGenerator
+from algorithms.algo import expand, expand_rand, randPoisDistribution, expand2, revertMidC, setMidC
 from Motif import Motif
 from Note import Note
 from NoteScale import NoteScale

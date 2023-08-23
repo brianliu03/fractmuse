@@ -4,8 +4,8 @@ import scipy as sp
 from Midi_Interface import MidiInterface
 from Motif import Motif
 from Note import Note
-from algo import expand, snotesToNotes
-from Markov_Algo import MarkovGenerator
+from algorithms.algo import expand, snotesToNotes
+from algorithms.Markov_Algo import MarkovGenerator
 
 def main():
     mid = MidiFile('/Users/brianliu03/Documents/midi_files/mozart_sonata_9_1stmvt_k311_PNO.mid', clip=True)

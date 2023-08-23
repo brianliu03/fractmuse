@@ -1,5 +1,5 @@
 from Midi_Interface import MidiInterface
-from algo import expand, interpolate, addDistribution, snotesToNotes
+from algorithms.algo import expand, interpolate, addDistribution, snotesToNotes
 from Comp import Notes_1
 
 def scale(modulus, shift, spans, direction):

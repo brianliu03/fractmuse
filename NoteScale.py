@@ -5,7 +5,7 @@
 
 class NoteScale:
 
-    def __init__(self, time, dur, pitch, vel, chan=1, span=None, scale=('chromatic', 60)):
+    def __init__(self, time, dur, pitch, vel, chan=1, span=None, scale=('chromatic', 60, None)):
         self.time = time
         self.dur = dur
         self.pitch = pitch

@@ -1,6 +1,6 @@
 import rtmidi
 import time
-from algo import snotesToNotes, snotesToNotesTritones
+from algorithms.algo import snotesToNotes, snotesToNotesTritones
 from midiutil import MIDIFile
 
 class MidiInterface:

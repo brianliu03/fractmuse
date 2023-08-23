@@ -1,7 +1,7 @@
 from Midi_Interface import MidiInterface
 from Note import Note
 from Motif import Motif
-from algo import expand, snotesToNotes, snotesToNotesTritones
+from algorithms.algo import expand, snotesToNotes, snotesToNotesTritones
 from Comp import Comp_4
 
 def full_composition_01():
