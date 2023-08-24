@@ -1,3 +1,4 @@
+# Defines a Note with span and time
 class Note:
 
     def __init__(self, time, dur, pitch, vel, chan=1, span=None, root=21):
