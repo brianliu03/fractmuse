@@ -1,3 +1,4 @@
+# Store
 class Motif:
 
     def __init__(self, pitches, spans, vels):
