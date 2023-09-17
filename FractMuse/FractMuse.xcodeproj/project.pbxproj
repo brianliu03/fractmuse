@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DE4877BC2AB52F1B0036C57C /* FractMuseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4877BB2AB52F1B0036C57C /* FractMuseApp.swift */; };
+		DE4877BE2AB52F1B0036C57C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4877BD2AB52F1B0036C57C /* ContentView.swift */; };
+		DE4877C02AB52F1D0036C57C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE4877BF2AB52F1D0036C57C /* Assets.xcassets */; };
+		DE4877C42AB52F1D0036C57C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE4877C32AB52F1D0036C57C /* Preview Assets.xcassets */; };
+		DE4877CE2AB52F1D0036C57C /* FractMuseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4877CD2AB52F1D0036C57C /* FractMuseTests.swift */; };
+		DE4877D82AB52F1E0036C57C /* FractMuseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4877D72AB52F1E0036C57C /* FractMuseUITests.swift */; };
+		DE4877DA2AB52F1E0036C57C /* FractMuseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4877D92AB52F1E0036C57C /* FractMuseUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE4877CA2AB52F1D0036C57C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE4877B02AB52F1B0036C57C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE4877B72AB52F1B0036C57C;
+			remoteInfo = FractMuse;
+		};
+		DE4877D42AB52F1D0036C57C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE4877B02AB52F1B0036C57C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE4877B72AB52F1B0036C57C;
+			remoteInfo = FractMuse;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DE4877B82AB52F1B0036C57C /* FractMuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FractMuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE4877BB2AB52F1B0036C57C /* FractMuseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractMuseApp.swift; sourceTree = "<group>"; };
+		DE4877BD2AB52F1B0036C57C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DE4877BF2AB52F1D0036C57C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DE4877C12AB52F1D0036C57C /* FractMuse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FractMuse.entitlements; sourceTree = "<group>"; };
+		DE4877C32AB52F1D0036C57C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DE4877C92AB52F1D0036C57C /* FractMuseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FractMuseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE4877CD2AB52F1D0036C57C /* FractMuseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractMuseTests.swift; sourceTree = "<group>"; };
+		DE4877D32AB52F1D0036C57C /* FractMuseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FractMuseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE4877D72AB52F1E0036C57C /* FractMuseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractMuseUITests.swift; sourceTree = "<group>"; };
+		DE4877D92AB52F1E0036C57C /* FractMuseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractMuseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE4877B52AB52F1B0036C57C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE4877C62AB52F1D0036C57C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE4877D02AB52F1D0036C57C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DE4877AF2AB52F1B0036C57C = {
+			isa = PBXGroup;
+			children = (
+				DE4877BA2AB52F1B0036C57C /* FractMuse */,
+				DE4877CC2AB52F1D0036C57C /* FractMuseTests */,
+				DE4877D62AB52F1D0036C57C /* FractMuseUITests */,
+				DE4877B92AB52F1B0036C57C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE4877B92AB52F1B0036C57C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE4877B82AB52F1B0036C57C /* FractMuse.app */,
+				DE4877C92AB52F1D0036C57C /* FractMuseTests.xctest */,
+				DE4877D32AB52F1D0036C57C /* FractMuseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE4877BA2AB52F1B0036C57C /* FractMuse */ = {
+			isa = PBXGroup;
+			children = (
+				DE4877BB2AB52F1B0036C57C /* FractMuseApp.swift */,
+				DE4877BD2AB52F1B0036C57C /* ContentView.swift */,
+				DE4877BF2AB52F1D0036C57C /* Assets.xcassets */,
+				DE4877C12AB52F1D0036C57C /* FractMuse.entitlements */,
+				DE4877C22AB52F1D0036C57C /* Preview Content */,
+			);
+			path = FractMuse;
+			sourceTree = "<group>";
+		};
+		DE4877C22AB52F1D0036C57C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DE4877C32AB52F1D0036C57C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DE4877CC2AB52F1D0036C57C /* FractMuseTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE4877CD2AB52F1D0036C57C /* FractMuseTests.swift */,
+			);
+			path = FractMuseTests;
+			sourceTree = "<group>";
+		};
+		DE4877D62AB52F1D0036C57C /* FractMuseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DE4877D72AB52F1E0036C57C /* FractMuseUITests.swift */,
+				DE4877D92AB52F1E0036C57C /* FractMuseUITestsLaunchTests.swift */,
+			);
+			path = FractMuseUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE4877B72AB52F1B0036C57C /* FractMuse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE4877DD2AB52F1E0036C57C /* Build configuration list for PBXNativeTarget "FractMuse" */;
+			buildPhases = (
+				DE4877B42AB52F1B0036C57C /* Sources */,
+				DE4877B52AB52F1B0036C57C /* Frameworks */,
+				DE4877B62AB52F1B0036C57C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FractMuse;
+			productName = FractMuse;
+			productReference = DE4877B82AB52F1B0036C57C /* FractMuse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DE4877C82AB52F1D0036C57C /* FractMuseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE4877E02AB52F1E0036C57C /* Build configuration list for PBXNativeTarget "FractMuseTests" */;
+			buildPhases = (
+				DE4877C52AB52F1D0036C57C /* Sources */,
+				DE4877C62AB52F1D0036C57C /* Frameworks */,
+				DE4877C72AB52F1D0036C57C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE4877CB2AB52F1D0036C57C /* PBXTargetDependency */,
+			);
+			name = FractMuseTests;
+			productName = FractMuseTests;
+			productReference = DE4877C92AB52F1D0036C57C /* FractMuseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DE4877D22AB52F1D0036C57C /* FractMuseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE4877E32AB52F1E0036C57C /* Build configuration list for PBXNativeTarget "FractMuseUITests" */;
+			buildPhases = (
+				DE4877CF2AB52F1D0036C57C /* Sources */,
+				DE4877D02AB52F1D0036C57C /* Frameworks */,
+				DE4877D12AB52F1D0036C57C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE4877D52AB52F1D0036C57C /* PBXTargetDependency */,
+			);
+			name = FractMuseUITests;
+			productName = FractMuseUITests;
+			productReference = DE4877D32AB52F1D0036C57C /* FractMuseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE4877B02AB52F1B0036C57C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					DE4877B72AB52F1B0036C57C = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					DE4877C82AB52F1D0036C57C = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = DE4877B72AB52F1B0036C57C;
+					};
+					DE4877D22AB52F1D0036C57C = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = DE4877B72AB52F1B0036C57C;
+					};
+				};
+			};
+			buildConfigurationList = DE4877B32AB52F1B0036C57C /* Build configuration list for PBXProject "FractMuse" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE4877AF2AB52F1B0036C57C;
+			productRefGroup = DE4877B92AB52F1B0036C57C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE4877B72AB52F1B0036C57C /* FractMuse */,
+				DE4877C82AB52F1D0036C57C /* FractMuseTests */,
+				DE4877D22AB52F1D0036C57C /* FractMuseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE4877B62AB52F1B0036C57C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE4877C42AB52F1D0036C57C /* Preview Assets.xcassets in Resources */,
+				DE4877C02AB52F1D0036C57C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE4877C72AB52F1D0036C57C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE4877D12AB52F1D0036C57C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE4877B42AB52F1B0036C57C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE4877BE2AB52F1B0036C57C /* ContentView.swift in Sources */,
+				DE4877BC2AB52F1B0036C57C /* FractMuseApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE4877C52AB52F1D0036C57C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE4877CE2AB52F1D0036C57C /* FractMuseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE4877CF2AB52F1D0036C57C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE4877D82AB52F1E0036C57C /* FractMuseUITests.swift in Sources */,
+				DE4877DA2AB52F1E0036C57C /* FractMuseUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE4877CB2AB52F1D0036C57C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE4877B72AB52F1B0036C57C /* FractMuse */;
+			targetProxy = DE4877CA2AB52F1D0036C57C /* PBXContainerItemProxy */;
+		};
+		DE4877D52AB52F1D0036C57C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE4877B72AB52F1B0036C57C /* FractMuse */;
+			targetProxy = DE4877D42AB52F1D0036C57C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DE4877DB2AB52F1E0036C57C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DE4877DC2AB52F1E0036C57C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		DE4877DE2AB52F1E0036C57C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FractMuse/FractMuse.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FractMuse/Preview Content\"";
+				DEVELOPMENT_TEAM = 7NPX4HGH97;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianliu.FractMuse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DE4877DF2AB52F1E0036C57C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FractMuse/FractMuse.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FractMuse/Preview Content\"";
+				DEVELOPMENT_TEAM = 7NPX4HGH97;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianliu.FractMuse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DE4877E12AB52F1E0036C57C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7NPX4HGH97;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianliu.FractMuseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FractMuse.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FractMuse";
+			};
+			name = Debug;
+		};
+		DE4877E22AB52F1E0036C57C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7NPX4HGH97;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianliu.FractMuseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FractMuse.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FractMuse";
+			};
+			name = Release;
+		};
+		DE4877E42AB52F1E0036C57C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7NPX4HGH97;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianliu.FractMuseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FractMuse;
+			};
+			name = Debug;
+		};
+		DE4877E52AB52F1E0036C57C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7NPX4HGH97;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianliu.FractMuseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FractMuse;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE4877B32AB52F1B0036C57C /* Build configuration list for PBXProject "FractMuse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE4877DB2AB52F1E0036C57C /* Debug */,
+				DE4877DC2AB52F1E0036C57C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE4877DD2AB52F1E0036C57C /* Build configuration list for PBXNativeTarget "FractMuse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE4877DE2AB52F1E0036C57C /* Debug */,
+				DE4877DF2AB52F1E0036C57C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE4877E02AB52F1E0036C57C /* Build configuration list for PBXNativeTarget "FractMuseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE4877E12AB52F1E0036C57C /* Debug */,
+				DE4877E22AB52F1E0036C57C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE4877E32AB52F1E0036C57C /* Build configuration list for PBXNativeTarget "FractMuseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE4877E42AB52F1E0036C57C /* Debug */,
+				DE4877E52AB52F1E0036C57C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE4877B02AB52F1B0036C57C /* Project object */;
+}
