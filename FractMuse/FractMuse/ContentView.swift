@@ -67,12 +67,10 @@ struct TabBar: View {
     var body: some View {
         TabView {
             LibraryView()
-                .badge(2)
                 .tabItem { Label("Library", systemImage: "music.note.list") }
             CreateView()
                 .tabItem { Label("Create", systemImage: "plus.app.fill") }
             TemplatesView()
-                .badge("!")
                 .tabItem { Label("Account", systemImage: "music.quarternote.3") }
         }
     }
@@ -80,70 +78,19 @@ struct TabBar: View {
 
 struct LibraryView: View {
     var body: some View {
-        VStack(alignment: .center, spacing: 7) {
-            Image(systemName: "music.note.list")
-              .font(
-                Font.custom("SF Pro", size: 18)
-                  .weight(.medium)
-              )
-            Text("Library")
-              .font(
-                Font.custom("SF Pro", size: 10)
-                  .weight(.medium)
-              )
-              .multilineTextAlignment(.center)
-        }
-        .multilineTextAlignment(.center)
-        .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
-        .padding(.horizontal, 6.5)
-        .padding(.vertical, 0)
-        .frame(width: 48, height: 40, alignment: .center)
+        Text("Library")
     }
 }
 
 struct CreateView: View {
     var body: some View {
-        VStack(alignment: .center, spacing: 7) {
-            Image(systemName: "music.note.list")
-              .font(
-                Font.custom("SF Pro", size: 18)
-                  .weight(.medium)
-              )
-            Text("Library")
-              .font(
-                Font.custom("SF Pro", size: 10)
-                  .weight(.medium)
-              )
-              .multilineTextAlignment(.center)
-        }
-        .multilineTextAlignment(.center)
-        .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
-        .padding(.horizontal, 6.5)
-        .padding(.vertical, 0)
-        .frame(width: 48, height: 40, alignment: .center)
+        Text("CreateView")
     }
 }
 
 struct TemplatesView: View {
     var body: some View {
-        VStack(alignment: .center, spacing: 7) {
-            Image(systemName: "music.note.list")
-              .font(
-                Font.custom("SF Pro", size: 18)
-                  .weight(.medium)
-              )
-            Text("Library")
-              .font(
-                Font.custom("SF Pro", size: 10)
-                  .weight(.medium)
-              )
-              .multilineTextAlignment(.center)
-        }
-        .multilineTextAlignment(.center)
-        .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
-        .padding(.horizontal, 6.5)
-        .padding(.vertical, 0)
-        .frame(width: 48, height: 40, alignment: .center)
+        Text("Templates")
     }
 }
 
