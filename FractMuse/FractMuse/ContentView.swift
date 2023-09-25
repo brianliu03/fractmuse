@@ -10,6 +10,19 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
+//        NavBar()
+        TabBar()
+    }
+}
+
+//struct NavBar: View {
+//    var body: some View {
+//
+//    }
+//}
+
+struct TabBar: View {
+    var body: some View {
         HStack(alignment: .top) {
             // Space Between
             VStack(alignment: .center, spacing: 7) {
