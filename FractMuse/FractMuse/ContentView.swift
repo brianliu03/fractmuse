@@ -22,11 +22,8 @@ struct NavBar: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 20) {
-                    NavigationLink("Sample") {
-                    }
-                }
+            NavigationLink("Text") {
+                
             }
         }
     }

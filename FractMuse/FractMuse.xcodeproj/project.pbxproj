@@ -14,6 +14,8 @@
 		DE4877CE2AB52F1D0036C57C /* FractMuseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4877CD2AB52F1D0036C57C /* FractMuseTests.swift */; };
 		DE4877D82AB52F1E0036C57C /* FractMuseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4877D72AB52F1E0036C57C /* FractMuseUITests.swift */; };
 		DE4877DA2AB52F1E0036C57C /* FractMuseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4877D92AB52F1E0036C57C /* FractMuseUITestsLaunchTests.swift */; };
+		DEE59A6F2AC76BDA00A6F8D8 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE59A6E2AC76BDA00A6F8D8 /* QuickLook.framework */; };
+		DEE59A7B2AC76BDB00A6F8D8 /* a.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DEE59A6C2AC76BDA00A6F8D8 /* a.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +33,28 @@
 			remoteGlobalIDString = DE4877B72AB52F1B0036C57C;
 			remoteInfo = FractMuse;
 		};
+		DEE59A792AC76BDB00A6F8D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE4877B02AB52F1B0036C57C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DEE59A6B2AC76BDA00A6F8D8;
+			remoteInfo = a;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DEE59A7C2AC76BDB00A6F8D8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DEE59A7B2AC76BDB00A6F8D8 /* a.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DE4877B82AB52F1B0036C57C /* FractMuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FractMuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +68,8 @@
 		DE4877D32AB52F1D0036C57C /* FractMuseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FractMuseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4877D72AB52F1E0036C57C /* FractMuseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractMuseUITests.swift; sourceTree = "<group>"; };
 		DE4877D92AB52F1E0036C57C /* FractMuseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractMuseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DEE59A6C2AC76BDA00A6F8D8 /* a.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = a.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEE59A6E2AC76BDA00A6F8D8 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +94,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DEE59A692AC76BDA00A6F8D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEE59A6F2AC76BDA00A6F8D8 /* QuickLook.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +111,7 @@
 				DE4877BA2AB52F1B0036C57C /* FractMuse */,
 				DE4877CC2AB52F1D0036C57C /* FractMuseTests */,
 				DE4877D62AB52F1D0036C57C /* FractMuseUITests */,
+				DEE59A6D2AC76BDA00A6F8D8 /* Frameworks */,
 				DE4877B92AB52F1B0036C57C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +122,7 @@
 				DE4877B82AB52F1B0036C57C /* FractMuse.app */,
 				DE4877C92AB52F1D0036C57C /* FractMuseTests.xctest */,
 				DE4877D32AB52F1D0036C57C /* FractMuseUITests.xctest */,
+				DEE59A6C2AC76BDA00A6F8D8 /* a.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +130,11 @@
 		DE4877BA2AB52F1B0036C57C /* FractMuse */ = {
 			isa = PBXGroup;
 			children = (
+				DEE59A862AC76C5F00A6F8D8 /* Services */,
+				DEE59A852AC76C5500A6F8D8 /* Models */,
+				DEE59A842AC76C4B00A6F8D8 /* Controllers */,
+				DEE59A832AC76C4500A6F8D8 /* ViewModels */,
+				DEE59A822AC76C3E00A6F8D8 /* Views */,
 				DE4877BB2AB52F1B0036C57C /* FractMuseApp.swift */,
 				DE4877BD2AB52F1B0036C57C /* ContentView.swift */,
 				DE4877BF2AB52F1D0036C57C /* Assets.xcassets */,
@@ -129,6 +169,49 @@
 			path = FractMuseUITests;
 			sourceTree = "<group>";
 		};
+		DEE59A6D2AC76BDA00A6F8D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DEE59A6E2AC76BDA00A6F8D8 /* QuickLook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DEE59A822AC76C3E00A6F8D8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DEE59A832AC76C4500A6F8D8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DEE59A842AC76C4B00A6F8D8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DEE59A852AC76C5500A6F8D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DEE59A862AC76C5F00A6F8D8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,10 +222,12 @@
 				DE4877B42AB52F1B0036C57C /* Sources */,
 				DE4877B52AB52F1B0036C57C /* Frameworks */,
 				DE4877B62AB52F1B0036C57C /* Resources */,
+				DEE59A7C2AC76BDB00A6F8D8 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DEE59A7A2AC76BDB00A6F8D8 /* PBXTargetDependency */,
 			);
 			name = FractMuse;
 			productName = FractMuse;
@@ -185,6 +270,23 @@
 			productReference = DE4877D32AB52F1D0036C57C /* FractMuseUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		DEE59A6B2AC76BDA00A6F8D8 /* a */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEE59A7F2AC76BDB00A6F8D8 /* Build configuration list for PBXNativeTarget "a" */;
+			buildPhases = (
+				DEE59A682AC76BDA00A6F8D8 /* Sources */,
+				DEE59A692AC76BDA00A6F8D8 /* Frameworks */,
+				DEE59A6A2AC76BDA00A6F8D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = a;
+			productName = a;
+			productReference = DEE59A6C2AC76BDA00A6F8D8 /* a.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -192,7 +294,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					DE4877B72AB52F1B0036C57C = {
@@ -205,6 +307,9 @@
 					DE4877D22AB52F1D0036C57C = {
 						CreatedOnToolsVersion = 14.3.1;
 						TestTargetID = DE4877B72AB52F1B0036C57C;
+					};
+					DEE59A6B2AC76BDA00A6F8D8 = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
@@ -224,6 +329,7 @@
 				DE4877B72AB52F1B0036C57C /* FractMuse */,
 				DE4877C82AB52F1D0036C57C /* FractMuseTests */,
 				DE4877D22AB52F1D0036C57C /* FractMuseUITests */,
+				DEE59A6B2AC76BDA00A6F8D8 /* a */,
 			);
 		};
 /* End PBXProject section */
@@ -246,6 +352,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DE4877D12AB52F1D0036C57C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEE59A6A2AC76BDA00A6F8D8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,6 +394,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DEE59A682AC76BDA00A6F8D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -293,6 +413,11 @@
 			isa = PBXTargetDependency;
 			target = DE4877B72AB52F1B0036C57C /* FractMuse */;
 			targetProxy = DE4877D42AB52F1D0036C57C /* PBXContainerItemProxy */;
+		};
+		DEE59A7A2AC76BDB00A6F8D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DEE59A6B2AC76BDA00A6F8D8 /* a */;
+			targetProxy = DEE59A792AC76BDB00A6F8D8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -582,6 +707,68 @@
 			};
 			name = Release;
 		};
+		DEE59A7D2AC76BDB00A6F8D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7NPX4HGH97;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = a/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = a;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianliu.FractMuse.a;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DEE59A7E2AC76BDB00A6F8D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7NPX4HGH97;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = a/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = a;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianliu.FractMuse.a;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -617,6 +804,15 @@
 			buildConfigurations = (
 				DE4877E42AB52F1E0036C57C /* Debug */,
 				DE4877E52AB52F1E0036C57C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEE59A7F2AC76BDB00A6F8D8 /* Build configuration list for PBXNativeTarget "a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEE59A7D2AC76BDB00A6F8D8 /* Debug */,
+				DEE59A7E2AC76BDB00A6F8D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
