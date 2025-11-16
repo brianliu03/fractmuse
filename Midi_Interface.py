@@ -1,65 +1,94 @@
-import rtmidi
+"""Utilities for interacting with MIDI devices and files."""
+
+from __future__ import annotations
+
+import logging
 import time
-from algorithms.algo import snotesToNotes, snotesToNotesTritones
-from midiutil import MIDIFile
+from dataclasses import dataclass
+from typing import Iterable, List, Sequence
+
+import rtmidi
+
+from algorithms.algo import snotesToNotes
+from Note import Raw
+
+logger = logging.getLogger(__name__)
+
+
+@dataclass(frozen=True)
+class MidiPortConfig:
+    """Configuration for selecting a MIDI output port."""
+
+    preferred_names: Sequence[str]
+
 
 class MidiInterface:
+    """High-level wrapper around :mod:`rtmidi` with helpful defaults."""
 
-    def __init__(self, possible_names):
-        self.midiout = rtmidi.MidiOut()
-        self.number = None
-        print(self.midiout.get_ports())
-        for i, name in enumerate(self.midiout.get_ports()):
-            print('name: ', name)
-            if name in possible_names:
-                self.number = i
-                break
-        if self.number is None:
-            raise Exception("can't find any port named" + str(possible_names))
-        self.midiout.open_port(self.number)
+    def __init__(self, config: MidiPortConfig):
+        self._midi_out = rtmidi.MidiOut()
+        self._port_index = self._resolve_port(config.preferred_names)
+        self._midi_out.open_port(self._port_index)
 
-    def playRaw(self, raws_in):
-        raws = sorted(raws_in, key=lambda r: r.time)
-        curr_time = 0.0
-        for r in raws:
-            t = r.time
-            if t > curr_time:
-                time.sleep(t-curr_time)
-                curr_time = t
-            self.midiout.send_message(r.to_message())
-    
-    def playRawControlChange(self, raws_in):
-        curr_time = 0.0
-        for r in raws_in:
-            t = r.time + curr_time
-            time.sleep(t-curr_time)
-            curr_time += t
-            self.midiout.send_message(r)
+    def _resolve_port(self, preferred_names: Sequence[str]) -> int:
+        available_ports = self._midi_out.get_ports()
+        if not available_ports:
+            raise RuntimeError("No MIDI output ports are available")
 
-    def playSnotes(self, notes_in):
-        notes_in = snotesToNotes(notes_in)
-        accum = []
-        for n in notes_in:
-            events = n.to_raws()
-            accum += events
-        self.playRaw(accum)
+        logger.debug("Available MIDI ports: %s", available_ports)
+        if preferred_names:
+            for index, name in enumerate(available_ports):
+                if name in preferred_names:
+                    logger.info("Using MIDI port: %s", name)
+                    return index
+            logger.warning(
+                "None of the preferred MIDI ports %s were found; using %s",
+                preferred_names,
+                available_ports[0],
+            )
+        else:
+            logger.info("No preferred MIDI ports provided; using %s", available_ports[0])
+        return 0
 
-    def playNotes(self, notes_in):
-        accum = []
-        for n in notes_in:
-            events = n.to_raws()
-            if events is not None:
-                accum += events
-        self.playRaw(accum)
+    def close(self) -> None:
+        if self._midi_out.is_port_open():
+            self._midi_out.close_port()
 
-    def createFile(self, notes_in):
+    def __enter__(self) -> "MidiInterface":
+        return self
+
+    def __exit__(self, exc_type, exc, tb) -> None:
+        self.close()
+
+    def play_raw(self, events: Iterable[Raw]) -> None:
+        ordered = sorted(events, key=lambda event: event.time)
+        current_time = 0.0
+        for event in ordered:
+            target_time = event.time
+            if target_time > current_time:
+                time.sleep(target_time - current_time)
+                current_time = target_time
+            self._midi_out.send_message(event.to_message())
+
+    def play_snotes(self, notes) -> None:
+        self.play_notes(snotesToNotes(notes))
+
+    def play_notes(self, notes) -> None:
+        events: List[Raw] = []
+        for note in notes:
+            events.extend(note.to_raws())
+        self.play_raw(events)
+
+    def create_file(self, notes) -> None:
+        from midiutil import MIDIFile
+
         midi = MIDIFile(1)
         track = 0
         channel = 0
         midi.addTempo(track, 0, 60)
 
-        for n in notes_in:
-            midi.addNote(track, channel, n.pitch + 21, n.time, n.dur, n.vel)
-        
+        for note in notes:
+            midi.addNote(track, channel, note.pitch + 21, note.time, note.dur, note.vel)
+
         with open("comp.mid", "wb") as output_file:
             midi.writeFile(output_file)
