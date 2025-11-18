@@ -7,7 +7,7 @@ import time
 from dataclasses import dataclass
 from typing import Iterable, List, Sequence
 
-import rtmidi
+import rtmidi # type: ignore
 
 from algorithms.algo import snotesToNotes
 from Note import Raw

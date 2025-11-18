@@ -8,7 +8,7 @@ from typing import List
 class Motif:
     pitches: List[int] = field(default_factory=list)
     spans: List[float] = field(default_factory=list)
-    vels: List[int] = field(default_factory=list)
+    vels: List[float] = field(default_factory=list)
 
     def add(self, pitch: int, span: float, vel: int) -> None:
         self.pitches.append(pitch)
