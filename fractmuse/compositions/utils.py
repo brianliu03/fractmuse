@@ -6,11 +6,11 @@ from dataclasses import dataclass
 from copy import copy
 from typing import Iterable, List, Sequence
 
-from algorithms.algo import (
-    snotesToNotes,
-    snotesToNotesTritones,
+from fractmuse.algorithms.expand import (
+    snotes_to_notes,
+    snotes_to_notes_tritones,
 )
-from Note import Note
+from fractmuse.core.notes import Note
 
 
 @dataclass
@@ -42,5 +42,5 @@ def concatenate_sections(sections: Iterable[Section]) -> List[Note]:
 def to_notes(snotes: Sequence[Note], *, tritones: bool = False) -> List[Note]:
     """Convert span-based notes to absolute-time notes."""
 
-    converter = snotesToNotesTritones if tritones else snotesToNotes
+    converter = snotes_to_notes_tritones if tritones else snotes_to_notes
     return converter(list(snotes))

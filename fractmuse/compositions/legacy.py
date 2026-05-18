@@ -5,16 +5,18 @@ from __future__ import annotations
 from pathlib import Path
 from typing import List
 
-from Motif import Motif
-from Note import Note
-from algorithms.algo import (
+from fractmuse.algorithms.expand import (
     expand,
-    expandSnotes,
-    expandSnotesNoSpan,
+    expand_snotes,
+    expand_snotes_no_span,
     interpolate,
-    snotesToNotes,
-    snotesToNotesWithOffset,
+    snotes_to_notes,
+    snotes_to_notes_with_offset,
 )
+from fractmuse.algorithms.markov import MarkovGenerator
+from fractmuse.core.motif import Motif
+from fractmuse.core.notes import Note
+from fractmuse.io.midi import read_note_on_events
 
 from .utils import Section, concatenate_sections, to_notes
 
@@ -26,20 +28,8 @@ def _generate_snotes(expansions, modulus, shift, spans, direction):
 
 
 def _markov_from_midi(midi_path: Path, start_pitch: int) -> List[Note]:
-    from algorithms.Markov_Algo import MarkovGenerator
-    from mido import MidiFile
-
-    mid = MidiFile(str(midi_path), clip=True)
     motif = Motif([], [], [])
-
-    notes = []
-    times: List[float] = []
-    current = 0.0
-    for message in mid:
-        current += message.time
-        if message.type == "note_on" and getattr(message, "velocity", 0) > 0:
-            notes.append(message)
-            times.append(current)
+    notes, times = read_note_on_events(midi_path)
 
     if not notes:
         return []
@@ -73,7 +63,7 @@ def _markov_from_midi(midi_path: Path, start_pitch: int) -> List[Note]:
 
     base = [Note(None, 1.0, 0, 0, span=1, root=0)]
     expanded = expand(base, comp, expPitch=True, expSpan=True, expVel=False, offset=21)
-    return snotesToNotes(expanded)
+    return snotes_to_notes(expanded)
 
 
 def legacy_main() -> List[Note]:
@@ -181,7 +171,7 @@ def legacy_main5() -> List[Note]:
     snotes_0 = _generate_snotes(1, modulus_0, shift_0, spans_0, direction_0)
     snotes_1 = _generate_snotes(1, modulus_1, shift_1, spans_1, direction_1)
     combined = interpolate([snotes_0, snotes_1], order)
-    expanded = expandSnotes(combined, combined, -39, 39)
+    expanded = expand_snotes(combined, combined, -39, 39)
     return to_notes(expanded)
 
 
@@ -199,7 +189,7 @@ def legacy_main6() -> List[Note]:
     snotes_0 = _generate_snotes(1, modulus_0, shift_0, spans_0, direction_0)
     snotes_1 = _generate_snotes(1, modulus_1, shift_1, spans_1, direction_1)
     combined = interpolate([snotes_0, snotes_1], order)
-    expanded = expandSnotesNoSpan(combined, combined, -100, 100)
+    expanded = expand_snotes_no_span(combined, combined, -100, 100)
     return to_notes(expanded)
 
 
@@ -225,7 +215,7 @@ def legacy_main7() -> List[Note]:
     snotes_0 = _generate_snotes(2, modulus_0, shift_0, spans_0, direction_0)
     snotes_1 = _generate_snotes(1, modulus_1, shift_1, spans_1, direction_1)
     snotes_2 = _generate_snotes(1, modulus_2, shift_2, spans_2, direction_2)
-    snotes_3 = expandSnotesNoSpan(snotes_2, snotes_0, -25, 10)
+    snotes_3 = expand_snotes_no_span(snotes_2, snotes_0, -25, 10)
     snotes_4 = interpolate([snotes_3, snotes_1], order)
     modulus_2b = [5, 7, 10]
     shift_2b = [2, 3, 5]
@@ -272,13 +262,13 @@ def legacy_main8() -> List[Note]:
     # Layered textures with offsets
     snotes_0 = _generate_snotes(1, modulus_0, shift_0, spans_0, [0, 88])
     snotes_1 = _generate_snotes(1, modulus_1, shift_1, spans_1, [88, 0])
-    notes_2 = to_notes(expandSnotesNoSpan(snotes_0, snotes_1, -20, 0))[:30]
+    notes_2 = to_notes(expand_snotes_no_span(snotes_0, snotes_1, -20, 0))[:30]
 
     snotes_0b = _generate_snotes(1, modulus_0, shift_0, spans_0, [0, 50])
     notes_0b = to_notes(snotes_0b)
     end_time = notes_0b[-1].time + notes_0b[-1].dur
     snotes_1c = _generate_snotes(1, modulus_1, shift_1, spans_1, [20, 88])
-    notes_1c = snotesToNotesWithOffset(snotes_1c, end_time)
+    notes_1c = snotes_to_notes_with_offset(snotes_1c, end_time)
     sections.append(Section(notes_2 + notes_0b + notes_1c))
 
     spans_0c = [0.75, 0.5, 1.2]
@@ -289,23 +279,27 @@ def legacy_main8() -> List[Note]:
     snotes_a = _generate_snotes(1, modulus_0, shift_0, spans_0c, direction_0c)
     snotes_b = _generate_snotes(1, modulus_1, shift_1, spans_1c, direction_1c)
     snotes_c = interpolate([snotes_a, snotes_b], order)
-    snotes_d = expandSnotes(snotes_c, snotes_c, -60, 60)
-    snotes_d = expandSnotesNoSpan(snotes_d, snotes_c, -60, 60)
+    snotes_d = expand_snotes(snotes_c, snotes_c, -60, 60)
+    snotes_d = expand_snotes_no_span(snotes_d, snotes_c, -60, 60)
     notes_layer = to_notes(snotes_d[300:342])
 
     modulus_extra = [12, 12, 12]
     shift_extra = [3, 7, 10]
     spans_extra = [1, 1, 1]
     direction_extra = [3, 28]
-    notes_extra = to_notes(_generate_snotes(1, modulus_extra, shift_extra, spans_extra, direction_extra))
+    notes_extra = to_notes(
+        _generate_snotes(1, modulus_extra, shift_extra, spans_extra, direction_extra)
+    )
 
     modulus_extra2 = [12, 12, 12]
     shift_extra2 = [7, 7, 7]
     spans_extra2 = [1, 5, 8]
     direction_extra2 = [57, 30]
-    snotes_extra2 = _generate_snotes(1, modulus_extra2, shift_extra2, spans_extra2, direction_extra2)
+    snotes_extra2 = _generate_snotes(
+        1, modulus_extra2, shift_extra2, spans_extra2, direction_extra2
+    )
     offset_extra = notes_extra[-1].time + notes_extra[-1].dur
-    notes_extra2 = snotesToNotesWithOffset(snotes_extra2, offset_extra)
+    notes_extra2 = snotes_to_notes_with_offset(snotes_extra2, offset_extra)
 
     sections.append(Section(notes_layer + notes_extra + notes_extra2))
 

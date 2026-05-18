@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Dict, List, Mapping
+from typing import Callable, List, Mapping
 
-from Note import Note
+from fractmuse.core.notes import Note
 
 from . import legacy
 
@@ -32,7 +32,10 @@ def _wrap(builder: Callable[[], List[Note]]) -> Callable[[CompositionContext], L
     return inner
 
 
-def _markov_builder(default_filename: str, start_pitch: int) -> Callable[[CompositionContext], List[Note]]:
+def _markov_builder(
+    default_filename: str,
+    start_pitch: int,
+) -> Callable[[CompositionContext], List[Note]]:
     def inner(context: CompositionContext) -> List[Note]:
         midi_path = context.midi_file or context.project_root / "midi_files" / default_filename
         if not midi_path.exists():

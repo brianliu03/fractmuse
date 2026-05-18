@@ -5,12 +5,10 @@ from __future__ import annotations
 import argparse
 import logging
 from pathlib import Path
-from typing import Iterable, Sequence, TYPE_CHECKING
+from typing import Iterable, Sequence
 
-from Note import Note
-
-if TYPE_CHECKING:  # pragma: no cover - imported lazily for optional dependencies
-    from Midi_Interface import MidiInterface, MidiPortConfig
+from fractmuse.core.notes import Note
+from fractmuse.io.midi import MidiPortConfig, play_timed_notes, write_midi_file
 
 from .compositions.registry import CompositionContext, get_composition, list_compositions
 
@@ -39,23 +37,11 @@ def _build_parser() -> argparse.ArgumentParser:
 
 
 def _write_midi_file(path: Path, notes: Sequence[Note]) -> None:
-    from midiutil import MIDIFile
-
-    midi = MIDIFile(1)
-    midi.addTempo(0, 0, 60)
-    for note in notes:
-        midi.addNote(0, 0, note.pitch + 21, note.time or 0.0, note.dur, note.vel)
-    with path.open("wb") as handle:
-        midi.writeFile(handle)
-    LOGGER.info("Wrote MIDI file to %s", path)
+    write_midi_file(path, notes)
 
 
 def _play(notes: Iterable[Note], ports: Sequence[str]) -> None:
-    from Midi_Interface import MidiInterface, MidiPortConfig
-
-    config = MidiPortConfig(ports)
-    with MidiInterface(config) as interface:
-        interface.play_notes(notes)
+    play_timed_notes(notes, MidiPortConfig(ports))
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -72,15 +58,21 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 0
 
     if args.command == "run":
-        composition = get_composition(args.name)
+        try:
+            composition = get_composition(args.name)
+        except KeyError as exc:
+            parser.exit(1, f"error: {exc}\n")
         context = CompositionContext(project_root=project_root, midi_file=args.midi_file)
-        notes = composition.build(context)
+        try:
+            notes = composition.build(context)
 
-        if args.output:
-            _write_midi_file(args.output, notes)
+            if args.output:
+                _write_midi_file(args.output, notes)
 
-        if not args.no_play:
-            _play(notes, args.port)
+            if not args.no_play:
+                _play(notes, args.port)
+        except RuntimeError as exc:
+            parser.exit(1, f"error: {exc}\n")
 
         return 0
 

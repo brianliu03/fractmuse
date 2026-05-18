@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 
-import random
 from dataclasses import dataclass
 from typing import List, Sequence, Tuple
 
-from algorithms.algo import expand, revertMidC, setMidC
-from Motif import Motif
-from Note import Note
-from NoteScale import NoteScale
+from fractmuse.algorithms.expand import expand, revert_mid_c, set_mid_c
+from fractmuse.core.motif import Motif
+from fractmuse.core.notes import Note
+from fractmuse.core.scales import NoteScale
 
 SpanSequence = Sequence[float]
 PitchSequence = Sequence[int]
@@ -52,11 +51,10 @@ class Notes_1:
         self.motif = Motif()
         start, end = self.direction
         _apply_sieve(self.motif, modulus, shift, self.spans, start, end)
-        self.motif.pitches = setMidC(self.motif.pitches)
-        self.rand = random.Random(self.random_seed)
+        self.motif.pitches = set_mid_c(self.motif.pitches)
 
     def markovify(self, order: int, start: int) -> None:
-        from algorithms.Markov_Algo import MarkovGenerator
+        from fractmuse.algorithms.markov import MarkovGenerator
 
         pitches = self.motif.pitches
         generator = MarkovGenerator(len(pitches), 88, order, 0)
@@ -67,7 +65,7 @@ class Notes_1:
         notes: List[Note] = [Note(None, 0.25, 0, 0, span=1.0, root=81)]
         for _ in range(self.num_expansions):
             notes = expand(notes, self.motif, expPitch=True, expSpan=True, expVel=False, offset=-60)
-        self.motif.pitches = revertMidC(self.motif.pitches)
+        self.motif.pitches = revert_mid_c(self.motif.pitches)
         return notes
 
 
@@ -81,7 +79,6 @@ class _BaseComp:
         self.num_expansions = num_expansions
         self.scale = scale
         self.seed = seed
-        self.rand = random.Random(seed)
         self.motif = self._build_motif()
 
     def _build_motif(self) -> Motif:
@@ -94,7 +91,14 @@ class _BaseComp:
         expansions = self.num_expansions if self.num_expansions > 0 else self.default_expansions
         current = notes
         for _ in range(expansions):
-            current = expand(current, self.motif, expPitch=True, expSpan=True, expVel=True, offset=-60)
+            current = expand(
+                current,
+                self.motif,
+                expPitch=True,
+                expSpan=True,
+                expVel=True,
+                offset=-60,
+            )
         return current
 
     def run(self) -> List[NoteScale]:
@@ -129,7 +133,11 @@ class Comp_7(_BaseComp):
     root = 64
 
     def _build_motif(self) -> Motif:
-        return Motif([-2, 5, -4, -2, 8, 10], [0.5, 1.3, 0.75, 0.03, 0.5, 0.5], [1, 0.5, 0.5, 0.5, 0.5, 0.5])
+        return Motif(
+            [-2, 5, -4, -2, 8, 10],
+            [0.5, 1.3, 0.75, 0.03, 0.5, 0.5],
+            [1, 0.5, 0.5, 0.5, 0.5, 0.5],
+        )
 
     def _initial_notes(self) -> List[NoteScale]:
         return [NoteScale(None, 0.5, 0, 40, span=1.0, scale=(self.scale, self.root))]
